@@ -1,0 +1,17 @@
+*.pyc
+*.bin
+__pycache__
+.idea
+.DS_Store
+._*
+*.log
+*~
+*.swp
+*.o
+temp
+release
+debug
+qrc_matrixBox.cpp
+qrc_radarsample.cpp
+.qmake.stash
+radarsample
