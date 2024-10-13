@@ -6,7 +6,7 @@ QT += network widgets
 OBJECTS_DIR = temp
 MOC_DIR = temp
 INCLUDEPATH += .
-DEFINES += QT_NO_DEBUG_OUTPUT
+DEFINES -= QT_NO_DEBUG_OUTPUT
 unix {
 	LIBS += -L${PROJECT_DIR}/release -lwlib \
 	-Wl,-rpath=/usr/local/lib \
@@ -23,7 +23,7 @@ win32 {
 QMAKE_CXXFLAGS += -std=c++11 -Wno-sign-compare -Wno-reorder
 
 TEMPLATE = app
-TARGET = network
+TARGET = simradar
 # Input
-HEADERS += maindlg.h
-SOURCES += main.cpp maindlg.cpp
+HEADERS += maindlg.h trace_data.h
+SOURCES += main.cpp maindlg.cpp trace_data.cpp

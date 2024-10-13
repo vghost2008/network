@@ -6,8 +6,8 @@ _Pragma("once")
 #include <wio/udpsocket.h>
 enum NetWorkType
 {
-	NWT_TCP_CLIENT      ,   
 	NWT_TCP_SERVER      ,   
+	NWT_TCP_CLIENT      ,   
 	NWT_UDP_UNICAST     ,   
 	NWT_UDP_MULTICAST   ,   
 	NWT_UDP_BROADCAST   ,   
@@ -41,6 +41,9 @@ class MainDlg:public QDialog
 		WTCPServer  tcp_server_;
 		WUDPSocket  udp_;
 		NetWorkType type_;
+		int pts_ = 256;
+		int counter_ = 0;
+		bool auto_send_trace_ = false;
 	private:
 		bool eventFilter(QObject* obj,QEvent* event);
 		void sendMsg(const QString& te_message_);
@@ -49,6 +52,12 @@ class MainDlg:public QDialog
 		void timerEvent(QTimerEvent* event)override;
 		void getArgument();
 		WAbstractSocket* currentIODevice();
+		void sendTrace();
+		void sendRadarInfo();
+		void getData(WBuffer& data);
+		void autoSendTrace();
+	private:
+		QComboBox     *cb_radar_type_ = new QComboBox;
 	public slots:
 		void slotSendTextChanged(const QString& text);
 		void slotReadyRead();
