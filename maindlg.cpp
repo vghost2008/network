@@ -3,6 +3,7 @@
 #include <toolkit.h>
 #include <QtDebug>
 #include <iostream>
+#include <wlogmacros.h>
 #include "trace_data.h"
 #include "radar_sim_data.h"
 using namespace std;
@@ -44,12 +45,12 @@ MainDlg::MainDlg()
     le_local_address_       =   new QLineEdit("192.168.0.30");
     le_remote_address_      =   new QLineEdit("192.168.0.30");
     le_multicast_address_   =   new QLineEdit("224.100.1.1");
-    le_local_port_          =   new QLineEdit("2000");
-    le_remote_port_         =   new QLineEdit("2000");
+    le_local_port_          =   new QLineEdit("5050");
+    le_remote_port_         =   new QLineEdit("5050");
 	cb_hex_send_            =   new QCheckBox("十六进制发送");
 	cb_hex_recv_            =   new QCheckBox("十六进制接收");
 	btn_connect_            =   new QPushButton(kConnect);
-	le_timer_interval_      =   new QLineEdit("1");
+	le_timer_interval_      =   new QLineEdit("3");
 	le_send_                =   new QLineEdit;
 	te_message_             =   new QTextEdit;
 	lb_info_                =   new QLabel;
@@ -393,10 +394,8 @@ void MainDlg::getData(WBuffer& data)
 			break;
 		case 0xAA00:
 			{
-				auto cmd1 = data.castRef<uint16_t>(2);
-				if(cmd1 == 0x0000) 
-					sendTrace();
-				data.right(data.size()-4);
+				sendTrace();
+				data.right(data.size()-2);
 				getData(data);
 			}
 			break;

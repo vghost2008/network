@@ -1,7 +1,7 @@
 #include <QtGui>
 #include <QFont>
 #include <QtCore>
-#include <wlog.h>
+#include <wlogmacros.h>
 #include "maindlg.h"
 #include <toolkit.h>
 using namespace WSpace;
@@ -21,8 +21,6 @@ int main (int argc, char *argv[])
 	const char filecode[]="UTF-8";
 	QTextCodec::setCodecForLocale(QTextCodec::codecForName(filecode)); 
 
-	WLogConfig config{{LL_DEBUG,LL_DEBUG}};
-	WLog::init(config);
 	MainDlg dlg;
 	dlg.show();
 	return app.exec();

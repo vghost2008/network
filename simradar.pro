@@ -12,7 +12,7 @@ unix {
 	-Wl,-rpath=/usr/local/lib \
 	-Wl,-rpath=/usr/lib
 	CONFIG += debug
-	INCLUDEPATH += ${PROJECT_DIR}/wlib/include
+	INCLUDEPATH += ${PROJECT_DIR}/swlib/include
 	DEFINES += POSIX_API
 }
 win32 {
